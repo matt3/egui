@@ -221,7 +221,7 @@ impl SidePanel {
                 }
                 is_resizing = ui.memory().is_being_dragged(resize_id);
                 if is_resizing {
-                    let width = (pointer.x - side.side_x(panel_rect)).abs();
+                    let width = pointer.x - side.side_x(panel_rect);
                     let width =
                         clamp_to_range(width, width_range.clone()).at_most(available_rect.width());
                     side.set_rect_width(&mut panel_rect, width);
@@ -508,7 +508,7 @@ impl TopBottomPanel {
                 }
                 is_resizing = ui.memory().interaction.drag_id == Some(resize_id);
                 if is_resizing {
-                    let height = (pointer.y - side.side_y(panel_rect)).abs();
+                    let height = pointer.y - side.side_y(panel_rect);
                     let height = clamp_to_range(height, height_range.clone())
                         .at_most(available_rect.height());
                     side.set_rect_height(&mut panel_rect, height);
